@@ -13,7 +13,10 @@
         "build": "electron-builder build --mac --win --linux deb tar.xz --publish never",
         "deploy": "electron-builder build --mac --win --linux deb tar.xz --publish always"
     },
-    "author": "Michael Goodwin",
+    "author": {
+        "name": "Michael Goodwin",
+        "email": "mikejg101@icloud.com"
+    },
     "license": "ISC",
     "devDependencies": {
         "electron": "^16.0.5",
