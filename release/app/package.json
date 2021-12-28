@@ -1,0 +1,18 @@
+{
+    "name": "eso-ttc-sync-tool",
+    "version": "4.5.0",
+    "description": "ESO Tamriel Trade Center Sync Tool",
+    "main": "./dist/main/main.js",
+    "author": {
+        "name": "mikejg101",
+        "email": "mikejg101@icloud.com",
+        "url": "https://github.com/mikejg101/eso-ttc-sync-tool"
+    },
+    "scripts": {
+        "electron-rebuild": "node -r ts-node/register ../../.erb/scripts/electron-rebuild.js",
+        "link-modules": "node -r ts-node/register ../../.erb/scripts/link-modules.ts",
+        "postinstall": "npm run electron-rebuild && npm run link-modules"
+    },
+    "dependencies": {},
+    "license": "MIT"
+}
