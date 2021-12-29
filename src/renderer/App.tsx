@@ -1,14 +1,26 @@
+import { useEffect, useState } from 'react';
 import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import icon from '../../assets/icon.svg';
 import './App.css';
 
+// const { ipcRenderer } = window.require('electron');
+
 const Hello = () => {
+  const [version, setVersion] = useState('-.-.-');
+
+  useEffect(() => {
+    (window as any).electron.ipcRenderer.once('app_version', (arg: any) => {
+      setVersion(arg.version);
+    });
+    (window as any).electron.ipcRenderer.checkVersion();
+  }, []);
+
   return (
     <div>
       <div className="Hello">
         <img width="200px" alt="icon" src={icon} />
       </div>
-      <h1>electron-react-boilerplate</h1>
+      <h1>{version}</h1>
       <div className="Hello">
         <a
           href="https://electron-react-boilerplate.js.org/"

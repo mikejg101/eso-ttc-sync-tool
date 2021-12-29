@@ -1,6 +1,6 @@
 {
     "name": "eso-ttc-sync-tool",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "ESO Tamriel Trade Center Sync Tool",
     "main": "./dist/main/main.js",
     "author": {

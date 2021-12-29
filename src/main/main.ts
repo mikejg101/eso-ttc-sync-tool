@@ -27,10 +27,14 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-ipcMain.on('ipc-example', async (event, arg) => {
-  const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
-  console.log(msgTemplate(arg));
-  event.reply('ipc-example', msgTemplate('pong'));
+// ipcMain.on('ipc-example', async (event: any, arg: any) => {
+//   const msgTemplate = (pingPong: string) => `IPC test: ${pingPong}`;
+//   console.log(msgTemplate(arg));
+//   event.reply('ipc-example', msgTemplate('pong'));
+// });
+
+ipcMain.on('app_version', async (event: any) => {
+  event.reply('app_version', { version: app.getVersion() });
 });
 
 if (process.env.NODE_ENV === 'production') {
@@ -64,7 +68,7 @@ const createWindow = async () => {
   }
 
   const RESOURCES_PATH = app.isPackaged
-    ? path.join(process.resourcesPath, 'assets')
+    ? path.join((process as any).resourcesPath, 'assets')
     : path.join(__dirname, '../../assets');
 
   const getAssetPath = (...paths: string[]): string => {
@@ -80,6 +84,7 @@ const createWindow = async () => {
       preload: path.join(__dirname, 'preload.js'),
     },
   });
+  mainWindow.setResizable(false);
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
@@ -102,7 +107,7 @@ const createWindow = async () => {
   menuBuilder.buildMenu();
 
   // Open urls in the user's browser
-  mainWindow.webContents.on('new-window', (event, url) => {
+  mainWindow.webContents.on('new-window', (event: any, url: any) => {
     event.preventDefault();
     shell.openExternal(url);
   });

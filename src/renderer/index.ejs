@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>Hello Electron React!</title>
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
-  <script>
-    window.electron.ipcRenderer.once('ipc-example', (arg) => {
-      // eslint-disable-next-line no-console
-      console.log(arg);
-    });
+</head>
 
-    window.electron.ipcRenderer.myPing();
-  </script>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    // window.electron.ipcRenderer.once('ipc-example', (arg) => {
+    //     // eslint-disable-next-line no-console
+    //     console.log(arg);
+    // });
+
+    // window.electron.ipcRenderer.once('app_version', (arg) => {
+    //     // eslint-disable-next-line no-console
+    //     console.log(arg);
+    // });
+
+    // window.electron.ipcRenderer.myPing();
+    // window.electron.ipcRenderer.checkVersion();
+</script>
+
 </html>
