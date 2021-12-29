@@ -13,7 +13,8 @@
         "start:main": "cross-env NODE_ENV=development electron -r ts-node/register/transpile-only ./src/main/main.ts",
         "start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
         "test": "jest",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "deploy": "electron-builder --publish always"
     },
     "lint-staged": {
         "*.{js,jsx,ts,tsx}": [
@@ -89,14 +90,12 @@
             "./assets/**"
         ],
         "publish": {
-            "provider": "github",
-            "owner": "mikejg101",
-            "repo": "https://github.com/mikejg101/eso-ttc-sync-tool.git"
+            "provider": "github"
         }
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/mikejg101/eso-ttc-sync-tool.git"
+        "url": "https://github.com/mikejg101/eso-ttc-sync-tool.git"
     },
     "author": {
         "name": "Michael Goodwin",
